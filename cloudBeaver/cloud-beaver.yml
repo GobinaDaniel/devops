@@ -1,0 +1,15 @@
+version: "3.7"
+
+services:
+  cloud-beaver: 
+    image: dbeaver/cloudbeaver:latest
+    restart: always
+    container_name: cloud_beaver
+    volumes:
+      - ~/devops/dbeaver:/opt/cloudbeaver/workspace
+    networks:
+      - devops_web_network
+
+networks:
+  devops_web_network:
+    external: true

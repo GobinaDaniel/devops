@@ -1,0 +1,16 @@
+version: "3.7"
+
+services:
+  portainer: 
+    image: portainer/portainer-ce:latest
+    restart: always
+    container_name: portainer
+    volumes:  
+      - ~/devops/portainer_data:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - devops_web_network
+
+networks:
+  devops_web_network:
+    external: true

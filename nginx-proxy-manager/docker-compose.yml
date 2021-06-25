@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+  nginx-proxy-manager:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: always
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+      - '5000:5000'
+    environment:
+      DISABLE_IPV6: 'true'
+    volumes:
+      - ./production.json:/app/config/production.json
+      - ~/devops/nginx/data:/data
+      - ~/devops/nginx/letsencrypt:/etc/letsencrypt
+      - ~/devops/nginx/storage:/storage
+    networks:
+      - devops_web_network
+
+networks:
+  devops_web_network:
+    external: true
+      
+      
+    

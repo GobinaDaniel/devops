@@ -1,0 +1,45 @@
+version: "3.7"
+
+services:
+  sonarqube:
+    image: sonarqube:8.0-developer-beta
+    restart: always
+    container_name: sonarqube
+    depends_on:
+      - postgres
+    environment:
+      - sonar.jdbc.username=postgres
+      - sonar.jdbc.password=devops2021
+      - sonar.jdbc.url=jdbc:postgresql://postgres:5432/sonarqube
+    volumes:
+      - ~/devops/sonarqube_conf:/opt/sonarqube/conf
+      - ~/devops/sonarqube_logs:/opt/sonarqube/logs
+      - ~/devops/sonarqube_data:/opt/sonarqube/data
+      - ~/devops/sonarqube_extensions:/opt/sonarqube/extensions
+    networks:
+      - devops_web_network
+  
+  postgres:
+    image: postgres:latest
+    restart: always
+    container_name: postgres
+    environment:
+      POSTGRES_DB: sonarqube
+      POSTGRES_DB_PASSWORD_FILE: /run/secrets/postgres_password
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - ~/devops/postgres_data:/var/lib/postgresql/data
+    networks:
+      - devops_web_network
+    secrets:
+      - source: postgres_password
+        target: /run/secrets/postgres_password
+        mode: 444
+
+networks:
+  devops_web_network:
+    external: true
+
+secrets:
+  postgres_password:
+    file: ./secrets/postgres_password
