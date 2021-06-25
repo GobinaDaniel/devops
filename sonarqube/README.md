@@ -8,6 +8,7 @@ mkdir -p ~/devops/sonarqube_extensions
 mkdir -p ~/devops/sonarqube_logs
 mkdir -p ~/devops/postgres_data
 mkdir -p ~/devops/sonarqube_conf
+mkdir -p ~/devops/sonarqube_temp
 ```
 
 ### configuration du domaine local
@@ -22,11 +23,13 @@ sudo nano /etc/hosts
 127.0.0.1    sonarqube.local
 ```
 
-### Commande pour ajouter le volume de sonarqube dans la machine
+### Configuration pour l'hôte Docker
 
 ```bash
-sudo sysctl -w vm.max_map_count=524288
-sudo sysctl -w fs.file-max=131072
+sudo sysctl -w vm.max_map_count=262144
+sudo sysctl -w fs.file-max=65536
+ulimit -n 65536
+ulimit -u 4096
 ```
 
 ### Execution du service
