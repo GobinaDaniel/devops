@@ -2,7 +2,7 @@ version: "3.7"
 
 services:
   sonarqube:
-    image: sonarqube:8.0-developer-beta
+    image: sonarqube:lts
     restart: always
     container_name: sonarqube
     depends_on:
