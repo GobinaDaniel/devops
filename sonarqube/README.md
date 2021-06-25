@@ -42,3 +42,9 @@ docker-compose -f "sonarqube.yml" up -d --build
 ```bash
 - username/password: admin/admin
 ```
+
+### Remarque
+
+Si lors du lancement de votre sonarqube en local une page précisant que sonarqube est en pleine maintenance s'affiche, suivez les indications suivantes :
+1. Ajouter setup à la suite de votre lien de sonarqube définit sur Nginx comme ceci : <b>sonarqube.local/setup</b>. (sonarqube.local est le lien que j'ai définit sur Nginx)
+2. Cliquez sur mettre à jour la base de donnée 
