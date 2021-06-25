@@ -26,10 +26,10 @@ https://www.jenkins.io/
 https://www.sonarqube.org/
 https://www.sonarsource.com/
 
-<p>Adminer :</p> outil de gestion de bases de données complet écrit en PHP
+<b>Adminer :</b> outil de gestion de bases de données complet écrit en PHP
 
 https://www.adminer.org/
 
-<p>cloudBeaver</p>: application web légère et moderne pour la gestion des bases de données
+<b>cloudBeaver</b>: application web légère et moderne pour la gestion des bases de données
 
 https://cloudbeaver.io/
