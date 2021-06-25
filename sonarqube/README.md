@@ -37,3 +37,8 @@ ulimit -u 4096
 ```bash
 docker-compose -f "sonarqube.yml" up -d --build
 ```
+
+### identifiant par défaut
+```bash
+- username/password: admin/admin
+```
